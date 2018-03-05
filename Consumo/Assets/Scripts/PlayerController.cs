@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         if (knockBackCounter<=0)
         {
-            moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
+            moveDirection = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"));
             moveDirection = moveDirection.normalized * moveSpeed;
             
             //moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
