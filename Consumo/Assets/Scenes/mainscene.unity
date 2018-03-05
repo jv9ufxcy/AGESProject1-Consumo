@@ -125,8 +125,10 @@ GameObject:
   - component: {fileID: 23538485}
   - component: {fileID: 23538483}
   - component: {fileID: 23538482}
+  - component: {fileID: 23538488}
   - component: {fileID: 23538481}
   - component: {fileID: 23538480}
+  - component: {fileID: 23538487}
   m_Layer: 0
   m_Name: PlayerSumo
   m_TagString: Player
@@ -189,7 +191,7 @@ CapsuleCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 23538479}
-  m_Material: {fileID: 13400000, guid: c694dedbab8710d43b10f9feea914104, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -227,9 +229,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a18c7732bc3c0a409ce1bb623b282da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 10
-  moveSpeed: 30
-  knockBackForce: 20
+  characterController: {fileID: 0}
+  moveSpeed: 10
+  gravityScale: 1
+  knockBackForce: 10
   knockBackTime: 0.5
 --- !u!114 &23538486
 MonoBehaviour:
@@ -243,6 +246,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 23538485}
+--- !u!143 &23538487
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 23538479}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &23538488
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 23538479}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.65
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &502106315
 GameObject:
   m_ObjectHideFlags: 0

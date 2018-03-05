@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour 
 {
-    [SerializeField]
-    private float maxSpeed=10;
+    //[SerializeField]
+    //private float maxSpeed=10;
 
-    public float moveSpeed;
-    
+    //public float moveSpeed;
+    //private Vector3 moveInput;
+    //private Vector3 moveVelocity;
     private Rigidbody myRB;
-
-    private Vector3 moveInput;
-    private Vector3 moveVelocity;
-
+    public CharacterController characterController;
+    //movement
+    private Vector3 moveDirection;
+    public float moveSpeed;
+    public float gravityScale;
+    //knockback
     public float knockBackForce;
     public float knockBackTime;
     private float knockBackCounter;
+    
 
     // Use this for initialization
     void Start () 
 	{
+        characterController = GetComponent<CharacterController>();
         myRB = GetComponent<Rigidbody>();
 	}
 	
@@ -34,28 +39,32 @@ public class PlayerController : MonoBehaviour
     {
         if (knockBackCounter<=0)
         {
-            moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
-            moveVelocity = moveInput * moveSpeed;
+            moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
+            moveDirection = moveDirection.normalized * moveSpeed;
+            
+            //moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+            //moveVelocity = moveInput * moveSpeed;
         }
         else
         {
             knockBackCounter -= Time.deltaTime;
         }
-        
+        moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale);
+        characterController.Move(moveDirection * Time.deltaTime);
     }
-    void FixedUpdate()
-    {
-        float currentSpeed = Mathf.Abs(myRB.velocity.magnitude);
-        if (currentSpeed<maxSpeed)
-        {
-            myRB.AddForce(moveVelocity);
-        }
-    }
+    //void FixedUpdate()
+    //{
+    //    float currentSpeed = Mathf.Abs(myRB.velocity.magnitude);
+    //    if (currentSpeed<maxSpeed)
+    //    {
+    //        myRB.AddForce(moveVelocity);
+    //    }
+    //}
 
     public void Knockback(Vector3 direction)
     {
         knockBackCounter = knockBackTime;
 
-        moveVelocity = direction * knockBackForce;
+        moveDirection = direction * knockBackForce;
     }
 }
