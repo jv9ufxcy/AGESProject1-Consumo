@@ -20,7 +20,7 @@ public class HurtPlayer : MonoBehaviour {
             Vector3 hitDirection = other.transform.position - transform.position;
             hitDirection = hitDirection.normalized;
 
-            FindObjectOfType<HealthManager>().HurtPlayer(hitDirection);
+            other.gameObject.GetComponent<HealthManager>().HurtPlayer(hitDirection);
         }
     }
 }
