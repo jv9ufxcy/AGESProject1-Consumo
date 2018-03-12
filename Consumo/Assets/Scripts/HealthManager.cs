@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour {
 
-    public int maxWeight;
-    public int currentWeight;
+    [SerializeField] private int maxWeight;
+    [SerializeField] private int currentWeight;
 
     //public int maxLives=3;
     //public int currentLives;
 
     public PlayerController playerController;
 
-    public float invincibilityLength;
+    [SerializeField] private float invincibilityLength;
     private float invincibilityCounter;
 
     private bool isRespawning;
     private Vector3 respawnPoint;
-    public float respawnLength;
+    [SerializeField] private float respawnLength;
 
-    public Renderer playerRenderer;
+    [SerializeField] private Renderer playerRenderer;
     private float flashCounter;
-    public float flashLength = 0.1f;
+    [SerializeField] private float flashLength = 0.1f;
     // Use this for initialization
     void Start ()
     {
@@ -102,16 +102,4 @@ public class HealthManager : MonoBehaviour {
             playerController.Knockback(direction);
         }
     }
-    //public void KillPlayer()
-    //{
-    //    if (currentLives<=0)
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //    else
-    //    {
-    //        currentLives--;
-    //        Respawn();
-    //    }
-    //}
 }
