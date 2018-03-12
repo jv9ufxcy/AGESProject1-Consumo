@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int currentWeight;
+    public int currentLives;
+    public int globalWeight;
     public Text weightText;
 
 	// Use this for initialization
@@ -22,7 +23,21 @@ public class GameManager : MonoBehaviour
 
     public void AddWeight(int weightToAdd)
     {
-        currentWeight += weightToAdd;
-        weightText.text = "Global Weight: " + currentWeight;
+        globalWeight += weightToAdd;
+        weightText.text = "Global Weight: " + globalWeight;
+    }
+
+    public void RemoveWeight(int weightToRemove)
+    {
+        globalWeight -= weightToRemove;
+        weightText.text = "Global Weight: " + globalWeight;
+    }
+    public void RemoveLife(int lifeToRemove)
+    {
+        if (currentLives>0)
+        {
+            currentLives -= lifeToRemove;
+        }
+        
     }
 }
