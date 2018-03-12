@@ -63,7 +63,7 @@ public class JoinPlayers : MonoBehaviour
     private void SpawnPlayerControlledCharacter(Player controllingPlayer)
     {
         GameObject playerCharacterGameObject = Instantiate(playerCharacterPrefab);
-        var playerCharacter = playerCharacterGameObject.GetComponent<Player>();
+        var playerCharacter = playerCharacterGameObject.GetComponent<PlayerController>();
         playerCharacter.ControllingPlayer = controllingPlayer;
 
         switch (controllingPlayer.PlayerNumber)

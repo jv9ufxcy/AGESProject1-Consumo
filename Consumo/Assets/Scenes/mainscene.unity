@@ -249,11 +249,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 421db5ee546b39348969a9c284b92fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxWeight: 10
-  currentWeight: 10
+  maxWeight: 100
+  currentWeight: 0
   playerController: {fileID: 23538485}
-  invincibilityLength: 2
-  respawnLength: 1
+  invincibilityLength: 3
+  respawnLength: 2
   playerRenderer: {fileID: 23538481}
   flashLength: 0.1
 --- !u!4 &109163356
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b74eb422f12c3c478f915b0284cf902, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLives: 0
+  currentLives: 3
   globalWeight: 0
   weightText: {fileID: 1186403769}
 --- !u!114 &109163358
@@ -296,13 +296,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodPrefab: {fileID: 1872582812932666, guid: f8f51a233989c5e41b8d9f8e3ce0cfbf, type: 2}
   spawnPoints:
-  - {x: -18, y: 0.5, z: 15}
-  - {x: -12, y: 0.5, z: 15}
-  - {x: -6, y: 0.5, z: 15}
-  - {x: 0, y: 0.5, z: 15}
-  - {x: 6, y: 0.5, z: 15}
-  - {x: 12, y: 0.5, z: 15}
-  - {x: 18, y: 0.5, z: 15}
+  - {x: 1, y: 0.5, z: -15}
+  launchForce: 1
   foodSpawnInterval: 5
   foodSpawnTimer: 0
 --- !u!1 &164833255
@@ -360,68 +355,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1599235992}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &456465502
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 456465505}
-  - component: {fileID: 456465504}
-  - component: {fileID: 456465503}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &456465503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 456465502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &456465504
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 456465502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 5
---- !u!4 &456465505
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 456465502}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &502106315
 GameObject:
@@ -955,7 +888,7 @@ Transform:
   m_Children:
   - {fileID: 1626441113}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1599235991
 GameObject:
@@ -987,7 +920,7 @@ Transform:
   - {fileID: 1209887979}
   - {fileID: 308412963}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1626441112
 GameObject:
@@ -1157,7 +1090,7 @@ Transform:
   m_LocalScale: {x: 4, y: 1, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1815015309
 GameObject:
@@ -1542,7 +1475,7 @@ Transform:
   - {fileID: 1815015310}
   - {fileID: 108709031}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1958600540
 Prefab:

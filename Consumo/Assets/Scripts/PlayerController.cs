@@ -25,6 +25,13 @@ public class PlayerController : MonoBehaviour
             controllingPlayer_UseProperty = value;
         }
     }
+    private void Awake()
+    {
+        //TODO: Assign Players dynamically
+        //temp debug code
+        Player player = new Player(1);
+        ControllingPlayer = player;
+    }
     // Use this for initialization
     void Start () 
 	{
