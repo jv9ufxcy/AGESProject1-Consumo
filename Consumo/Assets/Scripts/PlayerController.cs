@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
     {
         //TODO: Assign Players dynamically
         //temp debug code
-        Player player = new Player(1);
-        ControllingPlayer = player;
+        //Player player = new Player(2);
+        //ControllingPlayer = player;
     }
     // Use this for initialization
     void Start () 
@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMovement()
     {
+        //Allows player to move if they aren't currently being knocked back
         if (knockBackCounter<=0)
         {
             //moveDirection = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"));
