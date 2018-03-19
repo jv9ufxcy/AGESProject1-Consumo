@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour {
+public class HealthManager : MonoBehaviour
+{
 
     [SerializeField] private int maxWeight;
     [SerializeField] private int currentWeight;
-
-    //public int maxLives=3;
-    //public int currentLives;
-
+    public SumoWeight sumo;
     public PlayerController playerController;
 
     [SerializeField] private float invincibilityLength;
@@ -22,12 +20,13 @@ public class HealthManager : MonoBehaviour {
     [SerializeField] private Renderer playerRenderer;
     private float flashCounter;
     [SerializeField] private float flashLength = 0.1f;
+
     // Use this for initialization
     void Start ()
     {
-        //currentLives = maxLives;
-        //currentWeight = maxWeight;
-        respawnPoint = playerController.transform.position;
+        sumo = GetComponent<SumoWeight>();
+        playerRenderer = GetComponent<Renderer>();
+        playerController = GetComponent<PlayerController>();
     }
 	
 	// Update is called once per frame
@@ -53,25 +52,25 @@ public class HealthManager : MonoBehaviour {
             }
         }
     }
-    public void Respawn()
+    public void Respawn(SumoWeight sumo)
     {
         //Out of Bounds or Blowfish
         if (!isRespawning)
         {
-            StartCoroutine("RespawnCo");
+            StartCoroutine(RespawnCo(sumo));
         }
     }
 
-    public IEnumerator RespawnCo()
+    public IEnumerator RespawnCo(SumoWeight sumo)
     {
         isRespawning = true;
-        playerController.gameObject.SetActive(false);
+        sumo.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(respawnLength);
         isRespawning = false;
 
-        playerController.gameObject.SetActive(true);
-        playerController.transform.position = respawnPoint;
+        sumo.gameObject.SetActive(true);
+        sumo.transform.position = respawnPoint;
 
         //invul frames
         invincibilityCounter = invincibilityLength;

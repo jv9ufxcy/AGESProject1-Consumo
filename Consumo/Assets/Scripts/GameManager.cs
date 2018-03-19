@@ -9,18 +9,6 @@ public class GameManager : MonoBehaviour
     public int globalWeight;
     public Text weightText;
 
-	// Use this for initialization
-	void Start ()
-	{
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-		
-	}
-
     public void AddWeight(int weightToAdd)
     {
         globalWeight += weightToAdd;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SumoWeight : MonoBehaviour
 {
+    
     private float startingWeight = 100;
     [SerializeField]
     private float currentWeight;
@@ -13,9 +14,14 @@ public class SumoWeight : MonoBehaviour
     private int currentLives;
 
     private bool isDead;
-	// Use this for initialization
-	void Start ()
+    public Vector3 respawnPoint;
+
+    HealthManager healthManager;
+    // Use this for initialization
+    void Start ()
     {
+        healthManager = GameObject.Find("GameManager").GetComponent<HealthManager>();
+        respawnPoint = transform.position;
         currentWeight = startingWeight;
         currentLives = maxLives;
         isDead = false;
@@ -30,17 +36,18 @@ public class SumoWeight : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<HealthManager>().Respawn();
+            healthManager.Respawn(this);
             currentLives--;
         }
     }
     public void RespawnPlayer()
     {
-            FindObjectOfType<HealthManager>().Respawn();
+        healthManager.Respawn(this);
     }
     private void OnDeath()
     {
         isDead = true;
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
+
 }
