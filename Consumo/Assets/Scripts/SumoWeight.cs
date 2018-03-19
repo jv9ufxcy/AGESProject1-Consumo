@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SumoWeight : MonoBehaviour
 {
-    
     private float startingWeight = 100;
     [SerializeField]
     private float currentWeight;
@@ -16,10 +15,12 @@ public class SumoWeight : MonoBehaviour
     private bool isDead;
     public Vector3 respawnPoint;
 
+    private MeshRenderer playerRenderer;
     HealthManager healthManager;
     // Use this for initialization
     void Start ()
     {
+        playerRenderer = GetComponent<MeshRenderer>();
         healthManager = GameObject.Find("GameManager").GetComponent<HealthManager>();
         respawnPoint = transform.position;
         currentWeight = startingWeight;

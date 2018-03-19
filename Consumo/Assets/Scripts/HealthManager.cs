@@ -17,7 +17,7 @@ public class HealthManager : MonoBehaviour
     private Vector3 respawnPoint;
     [SerializeField] private float respawnLength;
 
-    [SerializeField] private Renderer playerRenderer;
+    [SerializeField] private static MeshRenderer playerRenderer;
     private float flashCounter;
     [SerializeField] private float flashLength = 0.1f;
 
@@ -25,10 +25,14 @@ public class HealthManager : MonoBehaviour
     void Start ()
     {
         sumo = GetComponent<SumoWeight>();
-        playerRenderer = GetComponent<Renderer>();
+
+        playerRenderer = GetComponent<MeshRenderer>();
         playerController = GetComponent<PlayerController>();
     }
-	
+	public static void SetPlayerRenderer(SumoWeight sw)
+    {
+        playerRenderer = sw.GetComponent<MeshRenderer>();
+    }
 	// Update is called once per frame
 	void Update ()
     {
@@ -57,6 +61,7 @@ public class HealthManager : MonoBehaviour
         //Out of Bounds or Blowfish
         if (!isRespawning)
         {
+            HealthManager.SetPlayerRenderer(sumo);
             StartCoroutine(RespawnCo(sumo));
         }
     }
@@ -71,7 +76,6 @@ public class HealthManager : MonoBehaviour
 
         sumo.gameObject.SetActive(true);
         sumo.transform.position = respawnPoint;
-
         //invul frames
         invincibilityCounter = invincibilityLength;
         playerRenderer.enabled = false;

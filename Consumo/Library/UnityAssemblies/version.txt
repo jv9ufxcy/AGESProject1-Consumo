@@ -1,4 +1,4 @@
-2017.3.0f3:2.1.0.0
+2017.3.0f3:3.3.0.2
 StandaloneWindows64
 E:/Unity/Editor/Data/Managed/UnityEditor.dll
 E:/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll
@@ -69,7 +69,7 @@ E:/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/Un
 E:/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll
 E:/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll
 E:/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
-C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/2015/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
+C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
 C:/Users/Jaire/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll
 C:/Users/Jaire/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/Editor/UnityEditor.Advertisements.dll
 C:/Users/Jaire/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll
