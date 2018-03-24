@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float knockBackTime;
     private float knockBackCounter;
 
+    //[SerializeField] private Transform pivot;
+    [SerializeField] private float rotateSpeed;
+    [SerializeField] private Transform pivot;
+    [SerializeField] private GameObject playerModel;
+
     private Player controllingPlayer_UseProperty;
 
     public Player ControllingPlayer
@@ -83,7 +88,6 @@ public class PlayerController : MonoBehaviour
         //Allows player to move if they aren't currently being knocked back
         if (knockBackCounter<=0)
         {
-            //moveDirection = (transform.forward * Input.GetAxisRaw("Vertical")) + (transform.right * Input.GetAxisRaw("Horizontal"));
             moveDirection = (transform.forward * VerticalInput) + (transform.right * HorizontalInput);
             moveDirection = moveDirection.normalized * moveSpeed;
         }
@@ -93,6 +97,14 @@ public class PlayerController : MonoBehaviour
         }
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale);
         characterController.Move(moveDirection * Time.deltaTime);
+        if (HorizontalInput!=0||VerticalInput!=0)
+        {
+            transform.rotation = Quaternion.Euler(0, pivot.rotation.eulerAngles.y, 0f);
+            //TODO: Make player rotate in movement direction instead of rotating like a tank
+            Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x,0,moveDirection.z));
+            
+            playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
+        }
     }
     public void Knockback(Vector3 direction)
     {

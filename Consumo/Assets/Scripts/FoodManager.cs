@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FoodManager : MonoBehaviour
 {
-    [SerializeField]    private GameObject foodPrefab;
+    [SerializeField]    private GameObject[] foodPrefab;
     [SerializeField]    private Vector3[] bottomSpawnPoints;
     [SerializeField]    private Vector3[] leftSpawnPoints;
     [SerializeField]    private float launchForce;
@@ -15,7 +15,7 @@ public class FoodManager : MonoBehaviour
     [SerializeField]    private float foodSpawnTimerLeft = 0f;
 
     Rigidbody foodRB;
-
+    private int randomInt;
 
     private void Start()
     {
@@ -25,18 +25,19 @@ public class FoodManager : MonoBehaviour
 
     void Update()
     {
-        foodSpawnTimerBottom += Time.deltaTime;
 
+        foodSpawnTimerBottom += Time.deltaTime;
+        randomInt=UnityEngine.Random.Range(0, foodPrefab.Length);
         if (foodSpawnTimerBottom >= foodSpawnIntervalBottom)
         {
             foodSpawnTimerBottom -= foodSpawnIntervalBottom;
-            SpawnFoodBottom(foodPrefab, 1);
+            SpawnFoodBottom(foodPrefab[randomInt], 1);
         }
         foodSpawnTimerLeft += Time.deltaTime;
         if (foodSpawnTimerLeft >= foodSpawnIntervalLeft)
         {
             foodSpawnTimerLeft -= foodSpawnIntervalLeft;
-            SpawnFoodLeft(foodPrefab, 1);
+            SpawnFoodLeft(foodPrefab[randomInt], 1);
         }
     }
 

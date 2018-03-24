@@ -4,6 +4,18 @@ using UnityEngine;
 
 public class KillPlayerPickup : MonoBehaviour
 {
+    [SerializeField] private float lifeTime = 10f;
+    private void Update()
+    {
+        if (lifeTime > 0)
+        {
+            lifeTime -= Time.deltaTime;
+        }
+        else if (lifeTime <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
