@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start () 
 	{
-        characterController = GetComponent<CharacterController>();
+        //characterController = GetComponent<CharacterController>();
         myRB = GetComponent<Rigidbody>();
 	}
 
@@ -96,15 +96,19 @@ public class PlayerController : MonoBehaviour
             knockBackCounter -= Time.deltaTime;
         }
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale);
-        characterController.Move(moveDirection * Time.deltaTime);
-        if (HorizontalInput!=0||VerticalInput!=0)
+        //characterController.Move(moveDirection * Time.deltaTime);
+        if (myRB.velocity != Vector3.zero)
         {
-            transform.rotation = Quaternion.Euler(0, pivot.rotation.eulerAngles.y, 0f);
-            //TODO: Make player rotate in movement direction instead of rotating like a tank
-            Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x,0,moveDirection.z));
-            
-            playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.LookRotation(myRB.velocity);
         }
+        //if (HorizontalInput!=0||VerticalInput!=0)
+        //{
+        //    transform.rotation = Quaternion.Euler(0, pivot.rotation.eulerAngles.y, 0f);
+        //    //TODO: Make player rotate in movement direction instead of rotating like a tank
+        //    Quaternion newRotation = Quaternion.LookRotation(new Vector3(moveDirection.x,0,moveDirection.z));
+
+        //    playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
+        //}
     }
     public void Knockback(Vector3 direction)
     {
