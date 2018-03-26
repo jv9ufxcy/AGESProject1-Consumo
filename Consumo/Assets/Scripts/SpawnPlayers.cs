@@ -12,7 +12,7 @@ public class SpawnPlayers : MonoBehaviour
     GameObject playerCharacterPrefab;
     #endregion
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         //if we're starting from mainscene create 4 players and skip joinscene
         if (JoinPlayers.AllPlayers == null)
@@ -28,19 +28,19 @@ public class SpawnPlayers : MonoBehaviour
         {
             SpawnPlayerControlledCharacter(player);
         }
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    // Update is called once per frame
+    void Update()
     {
-		
-	}
+
+    }
     private void SpawnPlayerControlledCharacter(Player controllingPlayer)
     {
         GameObject playerCharacterGameObject = Instantiate(playerCharacterPrefab);
         var playerCharacter = playerCharacterGameObject.GetComponent<PlayerController>();
         playerCharacter.ControllingPlayer = controllingPlayer;
-
+        playerCharacter.ControllingPlayer.SpawnedCount = playerCharacter.ControllingPlayer.SpawnedCount++;
         switch (controllingPlayer.PlayerNumber)
         {
             case 1:
@@ -63,4 +63,15 @@ public class SpawnPlayers : MonoBehaviour
                 throw new System.Exception("Invalid player number.");
         }
     }
+    //private void IfGameShouldEnd(Player controllingPlayer)
+    //{
+    //    switch (controllingPlayer.PlayerNumber)
+    //    {
+    //        case 1:
+    //            if (controllingPlayer.SpawnedCount > 3)
+    //                return true;
+    //        default:
+    //            return false;
+    //    }
+    //}
 }

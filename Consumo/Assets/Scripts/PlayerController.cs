@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     // Use this for initialization
     void Start () 
 	{
-        //characterController = GetComponent<CharacterController>();
+        characterController = GetComponent<CharacterController>();
         myRB = GetComponent<Rigidbody>();
 	}
 
@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
         if (knockBackCounter<=0)
         {
             moveDirection = (transform.forward * VerticalInput) + (transform.right * HorizontalInput);
+            moveDirection = transform.TransformDirection(moveDirection);
             moveDirection = moveDirection.normalized * moveSpeed;
         }
         else
@@ -96,11 +97,11 @@ public class PlayerController : MonoBehaviour
             knockBackCounter -= Time.deltaTime;
         }
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale);
-        //characterController.Move(moveDirection * Time.deltaTime);
-        if (myRB.velocity != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(myRB.velocity);
-        }
+        characterController.Move(moveDirection * Time.deltaTime);
+        //if (myRB.velocity != Vector3.zero)
+        //{
+        //    transform.rotation = Quaternion.LookRotation(myRB.velocity);
+        //}
         //if (HorizontalInput!=0||VerticalInput!=0)
         //{
         //    transform.rotation = Quaternion.Euler(0, pivot.rotation.eulerAngles.y, 0f);
