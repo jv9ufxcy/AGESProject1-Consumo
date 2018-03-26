@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SumoWeight : MonoBehaviour
 {
@@ -27,9 +29,26 @@ public class SumoWeight : MonoBehaviour
         currentLives = maxLives;
         isDead = false;
 	}
-	
-	// Update is called once per frame
-	public void KillPlayer()
+    public void AddWeightToPlayer(int healAmount)
+    {
+            currentWeight += healAmount;
+    }
+    public void RemoveWeightFromPlayer(int damage)
+    {
+            currentWeight -= damage;
+    }
+    // Update is called once per frame
+    private void Update()
+    {
+        UpdatePlayerWeightText();
+    }
+
+    private void UpdatePlayerWeightText()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void KillPlayer()
     {
         if (currentLives <= 0&&!isDead)
         {

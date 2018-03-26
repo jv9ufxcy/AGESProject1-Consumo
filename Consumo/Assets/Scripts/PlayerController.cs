@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     //movement
     private Vector3 moveDirection;
     [SerializeField]    private float moveSpeed;
+    [SerializeField] float turnThreshold = 0.1f;
     public float gravityScale;
     //knockback
     [SerializeField] private float knockBackForce;
@@ -81,7 +82,9 @@ public class PlayerController : MonoBehaviour
     void Update () 
 	{
         PlayerMovement();
-	}
+        UpdateRotation();
+        UpdateMovement();
+    }
 
     void PlayerMovement()
     {
@@ -98,6 +101,8 @@ public class PlayerController : MonoBehaviour
         }
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale);
         characterController.Move(moveDirection * Time.deltaTime);
+
+
         //if (myRB.velocity != Vector3.zero)
         //{
         //    transform.rotation = Quaternion.LookRotation(myRB.velocity);
@@ -110,6 +115,21 @@ public class PlayerController : MonoBehaviour
 
         //    playerModel.transform.rotation = Quaternion.Slerp(playerModel.transform.rotation, newRotation, rotateSpeed * Time.deltaTime);
         //}
+    }
+    private void UpdateRotation()
+    {
+        // Debug.DrawRay(rigidbody.position, moveDirection * 3, Color.red);
+        
+        if (moveDirection.magnitude > turnThreshold)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(moveDirection);
+            newRotation.eulerAngles = new Vector3(0, newRotation.eulerAngles.y, 0);
+            myRB.transform.rotation = newRotation;
+        }
+    }
+    private void UpdateMovement()
+    {
+        myRB.MovePosition(myRB.position + (moveDirection * moveSpeed * Time.deltaTime));
     }
     public void Knockback(Vector3 direction)
     {

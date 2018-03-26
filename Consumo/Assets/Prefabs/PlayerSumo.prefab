@@ -31,7 +31,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1344899865376628
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,6 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterController: {fileID: 0}
   moveSpeed: 10
+  turnThreshold: 0.1
   gravityScale: 1
   knockBackForce: 10
   knockBackTime: 0.5
@@ -349,7 +350,7 @@ MonoBehaviour:
   sumoMask:
     serializedVersion: 2
     m_Bits: 256
-  shoveRadius: 0.2
+  shoveRadius: 0.045
   bounceAudio: {fileID: 82380019819707468}
 --- !u!114 &114788596933186630
 MonoBehaviour:

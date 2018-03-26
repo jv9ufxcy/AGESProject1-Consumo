@@ -22,6 +22,11 @@ public class SpoiledFoodPickup : MonoBehaviour
         if (other.tag == "Player")
         {
             FindObjectOfType<GameManager>().RemoveWeight(value);
+            SumoWeight sumoWeight = other.gameObject.GetComponent<SumoWeight>();
+            if (sumoWeight != null)
+            {
+                sumoWeight.RemoveWeightFromPlayer(value);
+            }
             Destroy(gameObject);
         }
     }

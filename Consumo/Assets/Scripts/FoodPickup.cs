@@ -22,6 +22,11 @@ public class FoodPickup : MonoBehaviour
         if (other.tag == "Player")
         {
             FindObjectOfType<GameManager>().AddWeight(value);
+            SumoWeight sumoWeight = other.gameObject.GetComponent<SumoWeight>();
+            if (sumoWeight != null)
+            {
+                sumoWeight.AddWeightToPlayer(value);
+            }
             Destroy(gameObject);
         }
     }
