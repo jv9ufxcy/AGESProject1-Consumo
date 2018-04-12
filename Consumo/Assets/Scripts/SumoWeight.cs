@@ -80,7 +80,7 @@ public class SumoWeight : MonoBehaviour
         // Raise the event
         if (SumoDied != null)
             SumoDied.Invoke(playerNumber);
-
+        this.gameObject.SetActive(false);
       //  Destroy(gameObject);
     }
 
