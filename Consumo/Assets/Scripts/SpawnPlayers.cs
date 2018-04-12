@@ -26,7 +26,11 @@ public class SpawnPlayers : MonoBehaviour
         }
         foreach (var player in JoinPlayers.AllPlayers)
         {
-            SpawnPlayerControlledCharacter(player);
+            if (player.IsJoined)
+            {
+                SpawnPlayerControlledCharacter(player);
+            }
+            
         }
     }
 
@@ -40,7 +44,10 @@ public class SpawnPlayers : MonoBehaviour
         GameObject playerCharacterGameObject = Instantiate(playerCharacterPrefab);
         var playerCharacter = playerCharacterGameObject.GetComponent<PlayerController>();
         playerCharacter.ControllingPlayer = controllingPlayer;
-        playerCharacter.ControllingPlayer.SpawnedCount = playerCharacter.ControllingPlayer.SpawnedCount++;
+        var sumoWeight = playerCharacterGameObject.GetComponent<SumoWeight>();
+        sumoWeight.playerNumber = controllingPlayer.PlayerNumber;
+
+        //playerCharacter.ControllingPlayer.SpawnedCount = playerCharacter.ControllingPlayer.SpawnedCount++;
         switch (controllingPlayer.PlayerNumber)
         {
             case 1:

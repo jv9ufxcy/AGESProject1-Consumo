@@ -54,6 +54,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8ce677cd5a88745913d0fac45b2314, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1Ready: {fileID: 0}
+  player2Ready: {fileID: 0}
+  player3Ready: {fileID: 0}
+  player4Ready: {fileID: 0}
+  player1Start: {fileID: 0}
   player1SpawnPoint: {fileID: 0}
   player2SpawnPoint: {fileID: 0}
   player3SpawnPoint: {fileID: 0}
@@ -85,7 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2efaf0ede6e0930478a6a22d4b9f6d0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodPrefab: {fileID: 1872582812932666, guid: f8f51a233989c5e41b8d9f8e3ce0cfbf, type: 2}
+  foodPrefab:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   bottomSpawnPoints:
   - {x: 5, y: 0.5, z: -15}
   - {x: -15, y: 0.5, z: -15}
@@ -116,8 +124,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxWeight: 100
   currentWeight: 0
+  sumo: {fileID: 0}
   playerController: {fileID: 0}
   invincibilityLength: 3
   respawnLength: 2
-  playerRenderer: {fileID: 0}
   flashLength: 0.1

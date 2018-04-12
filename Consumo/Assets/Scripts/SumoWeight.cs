@@ -2,10 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SumoWeight : MonoBehaviour
 {
+
+    public static event Action<int> SumoDied;
+
     private float startingWeight = 100;
     [SerializeField]
     private float currentWeight;
@@ -16,14 +20,18 @@ public class SumoWeight : MonoBehaviour
 
     private bool isDead;
     public Vector3 respawnPoint;
+    public int playerNumber;
 
+    private CapsuleCollider playerCollision;
     private MeshRenderer playerRenderer;
     HealthManager healthManager;
     // Use this for initialization
     void Start ()
     {
         playerRenderer = GetComponent<MeshRenderer>();
-        healthManager = GameObject.Find("GameManager").GetComponent<HealthManager>();
+        playerCollision = GetComponent<CapsuleCollider>();
+        if (SceneManager.GetActiveScene().name == "mainscene")
+            healthManager = GameObject.Find("GameManager").GetComponent<HealthManager>();
         respawnPoint = transform.position;
         currentWeight = startingWeight;
         currentLives = maxLives;
@@ -40,7 +48,7 @@ public class SumoWeight : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        UpdatePlayerWeightText();
+        //UpdatePlayerWeightText();
     }
 
     private void UpdatePlayerWeightText()
@@ -67,7 +75,13 @@ public class SumoWeight : MonoBehaviour
     private void OnDeath()
     {
         isDead = true;
-        Destroy(gameObject);
+
+
+        // Raise the event
+        if (SumoDied != null)
+            SumoDied.Invoke(playerNumber);
+
+      //  Destroy(gameObject);
     }
 
 }
