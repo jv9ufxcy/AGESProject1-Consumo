@@ -6,16 +6,26 @@ using UnityEngine.UI;
 
 public class WinstateManager : MonoBehaviour
 {
-    [SerializeField]
-    private Text player1Start;
-    private GameObject consumoCredits;
+    [SerializeField]    private GameObject consumoCredits;
+    [SerializeField]    private Text playerWin;
+    private bool isGameOver = false;
     private int totalDeaths = 0;
 
     private void Start()
     {
-        player1Start.gameObject.SetActive(false);
+        consumoCredits.gameObject.SetActive(false);
     }
-
+    private void Update()
+    {
+        if (isGameOver==true)
+        {
+            if (Input.GetButtonDown("Submit"))
+            {
+                Debug.Log("you pressed submit");
+                SceneManager.LoadScene("joinscene");
+            }
+        }
+    }
     // event handler
     private void OnSumoDied(int controllingPlayerNumber)
     {
@@ -25,14 +35,9 @@ public class WinstateManager : MonoBehaviour
         {
             // Do your end game stuff here.
             Debug.Log("Player " + controllingPlayerNumber + " has won!");
-            if (Input.GetButtonDown("Submit"))
-            {
-                SceneManager.LoadScene("joinscene");
-            }
-            if (Input.GetButtonDown("Submit"))
-            {
-                consumoCredits.gameObject.SetActive(true);
-            }
+            playerWin.text= ("Player " + controllingPlayerNumber + " has won!");
+            consumoCredits.gameObject.SetActive(true);
+            isGameOver = true;
         }
     }
 

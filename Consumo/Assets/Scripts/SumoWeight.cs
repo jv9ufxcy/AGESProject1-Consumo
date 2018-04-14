@@ -22,12 +22,14 @@ public class SumoWeight : MonoBehaviour
     public Vector3 respawnPoint;
     public int playerNumber;
 
+    private Transform playerSize;
     private CapsuleCollider playerCollision;
     private MeshRenderer playerRenderer;
     HealthManager healthManager;
     // Use this for initialization
     void Start ()
     {
+        playerSize = GetComponent<Transform>();
         playerRenderer = GetComponent<MeshRenderer>();
         playerCollision = GetComponent<CapsuleCollider>();
         if (SceneManager.GetActiveScene().name == "mainscene")
@@ -40,10 +42,12 @@ public class SumoWeight : MonoBehaviour
     public void AddWeightToPlayer(int healAmount)
     {
             currentWeight += healAmount;
+            playerSize.localScale += new Vector3(0.01f, 0, 0.01f);
     }
     public void RemoveWeightFromPlayer(int damage)
     {
             currentWeight -= damage;
+            playerSize.localScale -= new Vector3(0.01f, 0, 0.01f);
     }
     // Update is called once per frame
     private void Update()
