@@ -14,7 +14,7 @@ public class JoinPlayers : MonoBehaviour
     private Transform player1SpawnPoint, player2SpawnPoint,
         player3SpawnPoint, player4SpawnPoint;
     [SerializeField]
-    GameObject playerCharacterPrefab;
+    GameObject playerCharacterPrefab, playerCredits;
     #endregion
     #region cosntants
     public const int MaxPlayers = 4;
@@ -45,18 +45,33 @@ public class JoinPlayers : MonoBehaviour
     void Start ()
 	{
         player1Start.gameObject.SetActive(false);
+        playerCredits.gameObject.SetActive(false);
 
         InitializePlayerList();
     }
-	
-	// Update is called once per frame
-	void Update ()
+    bool IsVisible
+    {
+        get { return playerCredits.activeSelf; }
+    }
+    // Update is called once per frame
+    void Update ()
 	{
         if (allPlayers[0].IsJoined)
         {
             if (Input.GetButtonDown("Submit"))
             {
                 SceneManager.LoadScene("mainscene");
+            }
+            if (Input.GetButtonDown("Select"))
+            {
+                if (IsVisible)
+                {
+                    playerCredits.SetActive(false);
+                }
+                else
+                {
+                    playerCredits.SetActive(true);
+                }
             }
         }
         CheckForJoiningPlayers();

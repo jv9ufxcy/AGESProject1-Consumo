@@ -322,6 +322,83 @@ Prefab:
       propertyPath: m_Color.r
       value: 0.9411765
       objectReference: {fileID: 0}
+    - target: {fileID: 224177745781099456, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224177745781099456, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 47.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605571364561008, guid: f2001dc29ee60394d8fa74f6efaf225e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114346924810288746, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114346924810288746, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114346924810288746, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_FontData.m_MaxSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 114346924810288746, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 224371881833465666, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.0154
+      objectReference: {fileID: 0}
+    - target: {fileID: 224371881833465666, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 193.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224371881833465666, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -94.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224371881833465666, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 189.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1605571364561008, guid: f2001dc29ee60394d8fa74f6efaf225e, type: 2}
+      propertyPath: m_Name
+      value: CredisPanelPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1211464543138272, guid: f2001dc29ee60394d8fa74f6efaf225e, type: 2}
+      propertyPath: m_Name
+      value: CreditsText
+      objectReference: {fileID: 0}
+    - target: {fileID: 224505067564139118, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224505067564139118, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 233.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224505067564139118, guid: f2001dc29ee60394d8fa74f6efaf225e,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 109.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2001dc29ee60394d8fa74f6efaf225e, type: 2}
   m_IsPrefabParent: 0
@@ -347,6 +424,11 @@ Camera:
   m_PrefabParentObject: {fileID: 20579056309549892, guid: 94ef9a1e17d0748469183032d08d200e,
     type: 2}
   m_PrefabInternal: {fileID: 1776616208}
+--- !u!1 &1542139151 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1605571364561008, guid: f2001dc29ee60394d8fa74f6efaf225e,
+    type: 2}
+  m_PrefabInternal: {fileID: 489454935}
 --- !u!4 &1607328708 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4048563668553940, guid: 8ca4cc7068c9b994ab514d350ad2c411,
@@ -487,12 +569,102 @@ Prefab:
       propertyPath: player1Start
       value: 
       objectReference: {fileID: 1921737085}
+    - target: {fileID: 114281774708317694, guid: 81d3010fbdd1f6147ba1862076927eef,
+        type: 2}
+      propertyPath: playerCredits
+      value: 
+      objectReference: {fileID: 1542139151}
     m_RemovedComponents:
     - {fileID: 114963387853102660, guid: 81d3010fbdd1f6147ba1862076927eef, type: 2}
     - {fileID: 114851824793952560, guid: 81d3010fbdd1f6147ba1862076927eef, type: 2}
     - {fileID: 114583641716656298, guid: 81d3010fbdd1f6147ba1862076927eef, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 81d3010fbdd1f6147ba1862076927eef, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1805564623 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1601111547318010, guid: 81d3010fbdd1f6147ba1862076927eef,
+    type: 2}
+  m_PrefabInternal: {fileID: 1805564622}
+--- !u!82 &1805564624
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1805564623}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 82e9bc15c91df4e40a009b4e55081c86, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &1921737085 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114736588334326592, guid: f2001dc29ee60394d8fa74f6efaf225e,
