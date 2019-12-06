@@ -82,10 +82,10 @@ public class JoinPlayers : MonoBehaviour
 
         foreach (var player in unjoinedPlayers)
         {
-            Debug.Log("Check Player " + player.PlayerNumber.ToString());
+            //Debug.Log("Check Player " + player.PlayerNumber.ToString());
             if (Input.GetButtonDown(joinButtonName + player.PlayerNumber.ToString()))
             {
-                Debug.Log("Join player " + player.PlayerNumber);
+                //Debug.Log("Join player " + player.PlayerNumber);
                 player.IsJoined = true;
                 SpawnPlayerControlledCharacter(player);
             }

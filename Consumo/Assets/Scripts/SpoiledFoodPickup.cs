@@ -19,13 +19,13 @@ public class SpoiledFoodPickup : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
-            FindObjectOfType<GameManager>().RemoveWeight(value);
+            FindObjectOfType<FoodManager>().RemoveSize(value);
             SumoWeight sumoWeight = other.gameObject.GetComponent<SumoWeight>();
             if (sumoWeight != null)
             {
-                sumoWeight.RemoveWeightFromPlayer(value);
+                sumoWeight.RemoveHealthFromPlayer(value);
             }
             Destroy(gameObject);
         }

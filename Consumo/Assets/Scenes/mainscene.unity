@@ -618,6 +618,26 @@ Prefab:
       propertyPath: player4SpawnPoint
       value: 
       objectReference: {fileID: 308412963}
+    - target: {fileID: 114672044163010142, guid: 81d3010fbdd1f6147ba1862076927eef,
+        type: 2}
+      propertyPath: p1Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114672044163010142, guid: 81d3010fbdd1f6147ba1862076927eef,
+        type: 2}
+      propertyPath: p2Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114672044163010142, guid: 81d3010fbdd1f6147ba1862076927eef,
+        type: 2}
+      propertyPath: p3Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114672044163010142, guid: 81d3010fbdd1f6147ba1862076927eef,
+        type: 2}
+      propertyPath: p4Color.a
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81d3010fbdd1f6147ba1862076927eef, type: 2}
   m_IsPrefabParent: 0
@@ -880,6 +900,15 @@ Prefab:
     - target: {fileID: 1552005318498124, guid: bc0dcdfc6247cea4caf998235a5c7cbe, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883973371812206, guid: bc0dcdfc6247cea4caf998235a5c7cbe, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224518631875165416, guid: bc0dcdfc6247cea4caf998235a5c7cbe,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 53.800003
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc0dcdfc6247cea4caf998235a5c7cbe, type: 2}

@@ -10,54 +10,76 @@ public class SumoWeight : MonoBehaviour
 
     public static event Action<int> SumoDied;
 
-    private float startingWeight = 100;
-    [SerializeField]
-    private float currentWeight;
-    [SerializeField]
-    private int maxLives = 3;
-    [SerializeField]
-    private int currentLives;
+    [SerializeField] private float startingHealth = 100, sizeLevel, levelExp, levelCap=100, currentHealth;
+    [SerializeField] private int maxLives = 3, currentLives;
 
     private bool isDead;
     public Vector3 respawnPoint;
     public int playerNumber;
 
     private Transform playerSize;
-    private CapsuleCollider playerCollision;
+    private Collider playerCollision;
     private MeshRenderer playerRenderer;
     HealthManager healthManager;
     // Use this for initialization
     void Start ()
     {
-        playerSize = GetComponent<Transform>();
-        playerRenderer = GetComponent<MeshRenderer>();
-        playerCollision = GetComponent<CapsuleCollider>();
-        if (SceneManager.GetActiveScene().name == "mainscene")
-            healthManager = GameObject.Find("GameManager").GetComponent<HealthManager>();
+        Initialize();
+        CheckSCene();
+        SetStartingStats();
+    }
+
+    private void SetStartingStats()
+    {
         respawnPoint = transform.position;
-        currentWeight = startingWeight;
+        currentHealth = startingHealth;
         currentLives = maxLives;
         isDead = false;
-	}
-    public void AddWeightToPlayer(int healAmount)
-    {
-            currentWeight += healAmount;
-            playerSize.localScale += new Vector3(0.01f, 0, 0.01f);
     }
-    public void RemoveWeightFromPlayer(int damage)
+
+    private void Initialize()
     {
-            currentWeight -= damage;
-            playerSize.localScale -= new Vector3(0.01f, 0, 0.01f);
+        playerSize = GetComponent<Transform>();
+        playerRenderer = GetComponent<MeshRenderer>();
+        playerCollision = GetComponent<Collider>();
+    }
+
+    private void CheckSCene()
+    {
+        if (SceneManager.GetActiveScene().name == "mainscene")
+            healthManager = GameObject.Find("GameManager").GetComponent<HealthManager>();
+    }
+
+    public void AddHealthToPlayer(float healAmount)
+    {
+        currentHealth += healAmount;
+        levelExp += healAmount;
+    }
+    public void RemoveHealthFromPlayer(float damage)
+    {
+        currentHealth -= damage;
+        levelExp -= damage;
     }
     // Update is called once per frame
     private void Update()
     {
-        //UpdatePlayerWeightText();
+        LevelUp();
     }
 
-    private void UpdatePlayerWeightText()
+    private void LevelUp()
     {
-        throw new NotImplementedException();
+        while (levelExp>=levelCap)
+        {
+            sizeLevel++;
+            levelExp -= levelCap;
+        }
+        playerSize.localScale = new Vector3(1f, 1f, 1f) * ((sizeLevel / 5f)+1f);
+
+        if (levelExp<0)
+        {
+            levelExp = 0;
+            KillPlayer();
+        }
     }
 
     public void KillPlayer()
@@ -79,7 +101,6 @@ public class SumoWeight : MonoBehaviour
     private void OnDeath()
     {
         isDead = true;
-
 
         // Raise the event
         if (SumoDied != null)

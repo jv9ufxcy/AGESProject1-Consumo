@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class FoodManager : MonoBehaviour
 {
     [SerializeField]    private GameObject[] foodPrefab;
@@ -26,18 +27,45 @@ public class FoodManager : MonoBehaviour
 
     Rigidbody foodRB;
     private int randomInt;
+    [SerializeField] private float minSizeMultiplier=1, maxSizeMultiplier=3, globalSize=1, randomFloatMultiplier;
+
+    public float GlobalSize
+    {
+        get
+        {
+            return globalSize;
+        }
+
+        set
+        {
+            globalSize = value;
+        }
+    }
 
     private void Start()
     {
-        //foodRB = AddComponent<Rigidbody>();
+
+    }
+    void Update()
+    {
+        IncreaseMultiplier();
+        FoodSpawnTimers();
     }
 
+    private void IncreaseMultiplier()
+    {
+        randomFloatMultiplier = UnityEngine.Random.Range(minSizeMultiplier, maxSizeMultiplier);
+        if (GlobalSize % 100 == 0)
+        {
+            maxSizeMultiplier++;
+        }
+    }
 
-    void Update()
+    private void FoodSpawnTimers()
     {
         //bottom timer
         foodSpawnTimerBottom += Time.deltaTime;
-        randomInt=UnityEngine.Random.Range(0, foodPrefab.Length);
+        randomInt = UnityEngine.Random.Range(0, foodPrefab.Length);
         if (foodSpawnTimerBottom >= foodSpawnIntervalBottom)
         {
             foodSpawnTimerBottom -= foodSpawnIntervalBottom;
@@ -66,15 +94,16 @@ public class FoodManager : MonoBehaviour
         }
     }
 
-            //foodscript newfood = foodinstance.GetComponent<foodscript>();
-            //newfood.foodvalue *= 1 + players[0].sizebonus + players[1].sizebonus;
-            //can also access food's rigidbody and add velocity to it
+    //foodscript newfood = foodinstance.GetComponent<foodscript>();
+    //newfood.foodvalue *= 1 + players[0].sizebonus + players[1].sizebonus;
+    //can also access food's rigidbody and add velocity to it
     public void SpawnFoodBottom(GameObject foodToSpawn, int count)
     {
         for (int i = 0; i < count; i++)
         {
             Vector3 spawnPosition = bottomSpawnPoints[UnityEngine.Random.Range(0, bottomSpawnPoints.Length)];
             GameObject foodInstance = Instantiate(foodToSpawn, spawnPosition, Quaternion.identity);
+            foodInstance.GetComponent<FoodPickup>().CalculateSize(GlobalSize);
             foodRB = foodInstance.GetComponent<Rigidbody>();
             foodRB.velocity = foodRB.transform.forward * launchForce;
 
@@ -110,5 +139,16 @@ public class FoodManager : MonoBehaviour
             foodRB = foodInstance.GetComponent<Rigidbody>();
             foodRB.velocity = -foodRB.transform.right * launchForce;
         }
+    }
+    public void AddSize(float sizeToAdd)
+    {
+        globalSize += sizeToAdd;
+        //weightText.text = "Global Weight: " + globalWeight;
+    }
+
+    public void RemoveSize(float sizeToRemove)
+    {
+        globalSize -= sizeToRemove;
+        //weightText.text = "Global Weight: " + globalWeight;
     }
 }

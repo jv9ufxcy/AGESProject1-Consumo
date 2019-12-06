@@ -20,20 +20,21 @@ public class HurtPlayer : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Find all the sumos in an area around the front and push them.
-        Collider[] colliders = Physics.OverlapSphere(transform.position, shoveRadius, sumoMask);
+        //Collider[] colliders = Physics.OverlapSphere(transform.position, shoveRadius, sumoMask);
 
-        for (int i = 0; i < colliders.Length; i++)
+        //for (int i = 0; i < colliders.Length; i++)
+        //{
+        PlayerController targetPlayer = other.GetComponent<PlayerController>();
+        if (targetPlayer!=null)
         {
-            PlayerController targetPlayer = colliders[i].GetComponent<PlayerController>();
-            if (!targetPlayer)
-                continue;
             Vector3 hitDirection = other.transform.position - transform.position;
             hitDirection = hitDirection.normalized;
 
             targetPlayer.Knockback(hitDirection);
+            bounceAudio.Play();
         }
-
-        bounceAudio.Play();
+                //continue;
+        //}
     }
     //private void OnTriggerEnter(Collider other)
     //{
